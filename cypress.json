@@ -1,1 +1,6 @@
-{}
+{
+  "reporter": "spec",
+  "reporterOptions": {
+    "toConsole": true
+  }
+}
