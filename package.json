@@ -6,7 +6,7 @@
     "cypress:clear": "cypress cache clear",
     "cypress:build": "docker build --no-cache -t e2e_image .",
     "cypress:explore": "docker run -it --entrypoint sh --rm e2e_image",
-    "cypress:run": "docker run --rm e2e_image cypress.json",
+    "cypress:run": "docker run --shm-size=2gb --rm -v $(pwd)/cypress/videos:/cypress/videos -v $(pwd)/cypress/screenshots:/cypress/screenshots e2e_image cypress.json",
     "cypress:open": "cypress open --config-file cypress.json"
   },
   "license": "ISC",
