@@ -70,7 +70,7 @@ I am doing this up on macOS but will try to keep things portable.
 - a text editor - [get one here](https://code.visualstudio.com/download)
 - node >14 and npm >6 - [get it here](https://nodejs.org/en/download/)
 - docker desktop - [get it here](https://www.docker.com/products/docker-desktop)
-- a GutHub account - [get it here](https://github.com/)
+- a GitHub account - [get it here](https://github.com/)
 - a docker registry (we use [gcr](https://cloud.google.com/container-registry?hl=en) at AMBOSS but will use [GitHub Container Registry](https://github.blog/2020-09-01-introducing-github-container-registry/) for the purposes of this post)
 - a CI solution (we mostly use [Jenkins](https://www.jenkins.io/) at AMBOSS atm, but will use [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions) for the purposes of this post)
 
@@ -133,13 +133,18 @@ As this is a Cypress application that will be running 'non-transpiled' Typescrip
 
 **production dependencies**
 ```shell
-npm i typescript cypess
+npm i typescript cypress
 ```
 Development dependencies like linting plugins and type definitions aren't directly needed for the Cypress application to run correctly.
 
 **dev dependencies**
 ```shell
-npm i -D @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-cypress @types/node @types/mocha @types/chai @types/babel__core eslint eslint-config-prettier eslint-plugin-prettier prettier
+npm i -D @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-cypress @types/node @types/mocha @types/chai @types/babel__core eslint eslint-config-prettier eslint-plugin-prettier prettier husky
+```
+
+Let's add a quick git hook using [Husky]()
+```shell
+
 ```
 Now that we have everything installed, let's run Cypress for the first time.
 ```shell
@@ -147,6 +152,7 @@ npx cypress open
 ```
 
 This will open the Cypress UI with a bunch of example tests, which I was super impressed with when I first saw it, btw.
+
 ![img_2.png](readme_assets/img_5.png)
 
 You should now have the following file and folder structure in your project:
@@ -271,11 +277,17 @@ To have GitHub Container Registry feature enabled (currently (January 2021) in o
   
 #### Auth and permissions
 You should also create a Personal Access Token (PAT) for you GitHub Container Registry. To create a [Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) called `GHCR_TOKEN` with the `write:packages` scope selected you can do this:
+
 ![img.png](readme_assets/img.png)
+
 And you should end up with this:
+
 ![img_1.png](readme_assets/img_1.png)
+
 You should then go to the repository itself and add a secret there too, like this:
+
 ![img_2.png](readme_assets/img_2.png)
+
 This really tripped me up so to reiterate - you have to create a [PAT](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) with the [appropriate scopes](https://docs.github.com/en/packages/guides/about-github-container-registry#about-scopes-and-permissions-for-github-container-registry) and add it as a [secret for your repo](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository).
 
 #### The Github Actions workflow definition
@@ -332,8 +344,11 @@ jobs:
           retention-days: 3
 ```
 Once this is done, please go ahead and commit and push it to the remote where you should see:
+
 ![img_3.png](readme_assets/img_3.png)
+
 You will notice that the video artifact was also uploaded correctly (there was no screenshot as there was no error).
+
 ![img_4.png](readme_assets/img_4.png)
 
 I will not be focusing on the particulars of the GH Actions implementation here as, imo, the workflow and general architecture of e2e testing that this enables are the bigger takeaways. Here is a quick overview:
@@ -388,8 +403,8 @@ You may be thinking to yourself, cool.... but where can I see the images I just 
 LABEL org.opencontainers.image.source https://github.com/alexjeffcott/amboss-cypress-demo
 ```
 If you push up this change then you will see that your image is listed in the Packages of your repo (on the right above 'Languages').
-![img.png](readme_assets/img_6.png)
 
+![img.png](readme_assets/img_6.png)
 
 ### Finishing up
 Of course, this project is not yet complete. In particular, much more should be done in CI, so a follow-up article might include:
