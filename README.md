@@ -93,7 +93,7 @@ I am doing this up on macOS but will try to keep things portable.
 
 ### Setting up config files and environment
 
-For this project we will be using fairly standard configurations for Eslint, Prettier, and Typescript. Please setup your text editor accordingly. The most important thing is that they play well together (no erroneous errors or special workarounds) and make your life easier (type annotations and autocompletion).
+For this project we will be using fairly standard configurations for Eslint, Prettier, and Typescript. Please set up your text editor accordingly. The most important thing is that they play well together (no erroneous errors or special workarounds) and make your life easier (type annotations and autocompletion).
 
 ```shell
 mkdir amboss-cypress-demo && cd $_
@@ -168,6 +168,7 @@ const tasks = (arr) => arr.join(" && ");
 
 module.exports = {
   hooks: {
+    "pre-commit": tasks(["npm run format"]),
     "pre-commit": tasks(["npm run lint"]),
   },
 };
@@ -309,6 +310,9 @@ These should all pass successfully, which is super.
 Now might be a good time to add some npm scripts to create an 'api' for users of the application - in other words, the quality engineers and developers who will be using it. Simply add the below to the 'scripts' section of your package.json so you can, for example, open the tests with UI by running `npm run cypress:open`.
 
 ```json
+"format": "prettier --write .",
+"lint": "eslint **/*.ts",
+"lint:fix": "eslint **/*.ts --fix",
 "cypress:clear": "cypress cache clear",
 "cypress:build": "docker build --no-cache -t e2e_image .",
 "cypress:explore": "docker run -it --entrypoint sh --rm e2e_image",
