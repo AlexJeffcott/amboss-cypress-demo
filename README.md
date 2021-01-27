@@ -383,14 +383,25 @@ Finally, the end-to-end tests are run, linking the video and screenshot artifact
       retention-days: 3
 ```
 
-Much more could be done in CI, so a follow up article might include:
+You may be thinking to yourself, cool.... but where can I see the images I just created? The answer to that question seems to be a bit of a moving target. As the GHCR is currently in open beta, it leverages the GitHub Packages ui... sort of. The best way to deal with this is to add the following to your Dockerfile which creates a connection between the package and your repo:
+```dockerfile
+LABEL org.opencontainers.image.source https://github.com/alexjeffcott/amboss-cypress-demo
+```
+If you push up this change then you will see that your image is listed in the Packages of your repo (on the right above 'Languages').
+![img.png](readme_assets/img_6.png)
+
+
+### Finishing up
+Of course, this project is not yet complete. In particular, much more should be done in CI, so a follow-up article might include:
 - adding caching to speed things up and save resources
 - adding reporting to some dashboard or analytics service like Datadog
 - extracting the running of the tests optional to a separate optional job
 - using integrations to Slack
+- connecting other CI pipelines to our e2e images
 
-### Finishing up
 Feel free to mess around with the tests and the outputs and let me know what works and doesn't in the comments!
+
+Thank you for taking the time to read this e2e architectural epic - I hope you enjoyed it.
 
 ### links
 <https://github.com/cypress-io/cypress/releases>
