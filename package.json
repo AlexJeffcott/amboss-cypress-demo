@@ -4,18 +4,14 @@
   "description": "An AMBOSSian Cypress Demo",
   "license": "ISC",
   "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint **/*.ts --fix",
     "cy:clear": "cypress cache clear",
     "cy:build": "docker build -t e2e_image .",
     "cy:build:nocache": "docker build --no-cache -t e2e_image .",
     "cy:explore": "docker run -it --entrypoint sh --rm e2e_image",
     "cy:run": "docker run --shm-size=2gb --rm -v $(pwd)/cypress/videos:/cypress/videos -v $(pwd)/cypress/screenshots:/cypress/screenshots e2e_image cypress.json",
     "cy:open": "cypress open --config-file cypress.json"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test",
-      "pre-push": "npm test"
-    }
   },
   "dependencies": {
     "typescript": "^4.1.3",
