@@ -1,4 +1,6 @@
-FROM cypress/included:6.3.0
+FROM cypress/base:14.15.4
+
+LABEL org.opencontainers.image.source https://github.com/AlexJeffcott/amoboss-cypress-demo
 
 COPY cypress.json .
 COPY tsconfig.json .
@@ -8,4 +10,4 @@ COPY ./cypress/ cypress
 
 RUN npm ci --production
 
-ENTRYPOINT ["cypress", "run", "--headless", "--browser", "chrome", "--config-file"]
+ENTRYPOINT ["npx", "cypress", "run", "--config-file"]

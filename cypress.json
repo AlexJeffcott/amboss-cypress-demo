@@ -1,4 +1,5 @@
 {
+  "testFiles": "**/actions.spec.ts",
   "reporter": "spec",
   "reporterOptions": {
     "toConsole": true

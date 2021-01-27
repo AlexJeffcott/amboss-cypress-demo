@@ -1,5 +1,6 @@
 .code
 .idea
+.env
 node_modules
-cypress/videos
-cypress/screenshots
+cypress/videos/**
+cypress/screenshots/**
