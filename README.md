@@ -195,7 +195,7 @@ You should now have the following file and folder structure in your project:
 └── package.json
 ```
 
-You will have noticed that this step creates a whole host of test files, a file structure, and a `cypress.json` file and then open the testing ui.
+You will have noticed that this step creates a whole host of test files, a file structure, and a `cypress.json` file and then opens the testing ui.
 
 Let's clean this up a bit first by changing all the .js files to .ts files.
 ```shell
@@ -232,7 +232,7 @@ The COPY steps copy the cypress folder, and necessary config file into the image
 
 We then install the 'production' dependencies. At this moment the only thing that needs to be installed in order to run the tests properly is Typescript and Cypress. As I mentioned before, if you add some other capabilities to your tests later, such as `cypress-file-upload`, then you would add this to your production dependencies. As an aside, being able to install the dependencies in this way, is a pleasingly natural consequence of having e2e in a separate dedicated repo as a stand-alone software project.
 
-Finally, we run Cypress against Electron (the default from Cypress) in its non-user interface mode as this is what will be used in CI (fyi opening the UI from a container is possible but is fiddly and constitutes a blog post all of its own!). Notably it is ready to take a config file as an argument.
+Finally, we run Cypress against Electron (the default from Cypress) in its non-user interface mode as this is what will be used in CI (fyi opening the UI from a container is possible but is fiddly and constitutes a blog post on its own!). Notably it is ready to take a config file as an argument.
 
 If you run `docker build -t e2e_image .` (don't forget the full stop!!!) then you should end up with something like the following in your terminal output.
 
@@ -250,7 +250,7 @@ docker run --rm e2e_image cypress.json
 ```
 These should all pass successfully, which is super.
 
-Now might be a good time to add some npm scripts to create an 'api' for users of the application - in other words, the QA Engineers and developers who will be using it. Simply add the below to the 'scripts' section of your package.json so you can, for example, open the tests with UI by running `npm run cypress:open`.
+Now might be a good time to add some npm scripts to create an 'api' for users of the application - in other words, the quality engineers and developers who will be using it. Simply add the below to the 'scripts' section of your package.json so you can, for example, open the tests with UI by running `npm run cypress:open`.
 ```json
 "cypress:clear": "cypress cache clear",
 "cypress:build": "docker build --no-cache -t e2e_image .",
@@ -273,7 +273,7 @@ Now that docker is set up, and we have some declarative npm scripts defined, it 
 We mostly use Jenkins at AMBOSS but for the purposes of this blog post I will be using Github Actions and GitHub Container Registery, so you will need a GitHub account.
 
 #### GHCR Open Beta
-To have GitHub Container Registry feature enabled (currently (January 2021) in open Beta). To do this login to [GitHub](https://github.com/), click on the account menu (prob your picture in the top right), open the 'Feature Preview' modal and enable it.
+To have GitHub Container Registry feature enabled (currently (January 2021) in open Beta) login to [GitHub](https://github.com/), click on the account menu (prob your picture in the top right), open the 'Feature Preview' modal and enable it.
   
 #### Auth and permissions
 You should also create a Personal Access Token (PAT) for you GitHub Container Registry. To create a [Personal Access Token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) called `GHCR_TOKEN` with the `write:packages` scope selected you can do this:
@@ -402,7 +402,7 @@ You may be thinking to yourself, cool.... but where can I see the images I just 
 ```dockerfile
 LABEL org.opencontainers.image.source https://github.com/alexjeffcott/amboss-cypress-demo
 ```
-If you push up this change then you will see that your image is listed in the Packages of your repo (on the right above 'Languages').
+If you push this change then you will see that your image is listed in the Packages of your repo (on the right above 'Languages').
 
 ![img.png](readme_assets/img_6.png)
 
