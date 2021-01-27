@@ -21,7 +21,7 @@ Let us imagine, for simplicity's sake, that a company has a frontend, and a back
 
 Let us also imagine that the backend holds back its changes in a staging environment prior to a twice weekly deployment.
 
-Let us further imagine that there are backend changes, which will result in an unhandled Javascript exception, ready and waiting to be deployed to the live environment tomorrow. Some small misalignment or unintentional misimplementation of the data contract could be more than sufficient to cause this. The change has just been deployed to the staging environment, so has not yet resulted in a broken web application and a new p0 event for your up-time metrics dashboard.
+Let us further imagine that there are backend changes, which will result in an unhandled Javascript exception, ready and waiting to be deployed to the live environment tomorrow. Some small misalignment or unintentional misimplementation of the data contract could be more than sufficient to cause this. The change has just been deployed to the staging environment, so has not yet resulted in a broken web application and a new critical bug event for your up-time metrics dashboard.
 
 Let us continue by imagining that the frontend starts their master deployment pipeline with a host of irrelevant changes.
 
@@ -37,14 +37,14 @@ It is not coherent that this bug be caught while deploying the frontend to the l
 
 It would be better if this breaking, albeit correct and desired, change be flagged up faster and more clearly 'post hoc' in the backend PR pipeline. Had this occurred, a breaking change in the backend code would have been correctly associated with the failing e2e test. From this standpoint, the backend engineer who owns the PR would align and coordinate with a trusted frontend friend and that would be trivially the end of that.
 
-Now imagine if the fairly simple example architecture of the project included multiple frontends, backends, microservices, guilds, chapters and teams. The problem would be far worst, but the solution would remain simple, powerful and natural. 
+Now imagine if the fairly simple example architecture of the project included multiple frontends, backends, microservices, guilds, chapters and teams. The problem would be far worse, but the solution would remain simple, powerful and natural. 
 
 ### Why extract?
 #### Velocity of delivery
 Good e2e coverage increases the confidence that we can make changes without improperly impacting stakeholders (be they data, other developers or end users). Without good testing, developers will tend to be, at best, overly tentative and defensive, and at worse resigned to blocked pipelines, and p0 bug events.
 
 #### Speed of recovery
-When an e2e failure occurs, that should happen as closely as possible to the cause of failure - both in time and code/workflow. What I mean by this is that a change in the return of a REST endpoint (even with 100% test coverage, as the tests will be updated to reflect the changes - the endpoint is doing what it should do, after all) could potentially break the user's experience (a potential p0) or, more subtly, erroneously alter values passed in tracking events (a potential BI disaster).
+When an e2e failure occurs, that should happen as closely as possible to the cause of failure - both in time and code/workflow. What I mean by this is that a change in the return of a REST endpoint (even with 100% test coverage, as the tests will be updated to reflect the changes - the endpoint is doing what it should do, after all) could potentially break the user's experience (a potential critical bug) or, more subtly, erroneously alter values passed in tracking events (a potential BI disaster).
 
 #### Natural simplicity while scaling vertically and horizontally
 It is surely a truism to say that architectures which encourage robust, simple implementations while scaling to the heavens and horizon are worth favouring. With an e2e application which is properly extracted and containerised, running the latest, or some particular, image in any and every pipeline or developer machine feels intuitive.
