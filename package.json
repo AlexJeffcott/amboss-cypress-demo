@@ -5,7 +5,8 @@
   "license": "ISC",
   "scripts": {
     "format": "prettier --write .",
-    "lint": "eslint **/*.ts --fix",
+    "lint": "eslint **/*.ts",
+    "lint:fix": "eslint **/*.ts --fix",
     "cy:clear": "cypress cache clear",
     "cy:build": "docker build -t e2e_image .",
     "cy:build:nocache": "docker build --no-cache -t e2e_image .",
