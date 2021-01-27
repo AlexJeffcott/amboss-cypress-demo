@@ -1,6 +1,6 @@
 FROM cypress/base:14.15.4
 
-LABEL org.opencontainers.image.source https://github.com/AlexJeffcott/amoboss-cypress-demo
+LABEL org.opencontainers.image.source https://github.com/alexjeffcott/amboss-cypress-demo
 
 COPY cypress.json .
 COPY tsconfig.json .
