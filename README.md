@@ -169,7 +169,6 @@ touch .huskyrc.js
 ```
 
 Add this to the file we just created:
-
 ```javascript
 const tasks = (arr) => arr.join(" && ");
 
