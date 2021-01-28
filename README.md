@@ -145,7 +145,7 @@ module.exports = {
 Now, let's set up the Typescript config:
 
 ```shell
-touch cypress/tsconfig.json
+touch tsconfig.json
 ```
 
 Add this to the file we just created:
@@ -169,6 +169,7 @@ touch .huskyrc.js
 ```
 
 Add this to the file we just created:
+
 ```javascript
 const tasks = (arr) => arr.join(" && ");
 
