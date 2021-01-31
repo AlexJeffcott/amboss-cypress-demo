@@ -1,10 +1,6 @@
-# Value and Quality: An Epic Story Of End-to-End Testing Architecture
-
-## TL;DR
-
-End-to-end testing is often equated with the frontend and often resides in the frontend codebase. I believe this is a significant mistake with a specific solution.
-
+# Value and Quality: An Epic Story Of End-to-End Testing Architecture Part 1
 ## What this article is about
+End-to-end testing is often equated with the frontend and often resides in the frontend codebase. I believe this is a significant mistake with a specific solution.
 
 The first part of this article will define the problem and lay out a proposed solution.
 
@@ -263,6 +259,8 @@ Now that the base setup is complete you have a cypress installation with a linti
 
 Now that this is done it might be time to `git commit` so we can get going with the docker setup.
 
+FYI GitHub now uses 'main' as the default name for the root branch. In my example, I am using 'master', which was the previous standard. 
+
 ### Containerising
 
 First, let's add a dockerfile and the config:
@@ -510,19 +508,14 @@ Thank you for taking the time to read this e2e architectural epic - I hope you e
 
 ### links
 
-<https://github.com/cypress-io/cypress/releases>
-<https://docs.npmjs.com/cli/v6/commands/npm-ci>
-<https://github.com/marketplace/actions/cypress-io>
-<https://docs.github.com/en/actions/learn-github-actions>
-<https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context>
-<https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#environment-files>
-<https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token>
-<https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository>
-<https://docs.github.com/en/packages/guides/pushing-and-pulling-docker-images>
-<https://github.com/settings/tokens>
-<https://github.com/docker/build-push-action/issues/100>
-<https://github.com/actions/upload-artifact>
-<https://hub.docker.com/r/cypress/browsers>
-<https://hub.docker.com/r/cypress/base>
-<https://superuser.com/questions/359723/mac-os-x-equivalent-of-the-ubuntu-tree-command>
-<https://github.blog/2020-09-01-introducing-github-container-registry/>
+[What's new in Cypress](https://github.com/cypress-io/cypress/releases)
+[What is npm ci?](https://docs.npmjs.com/cli/v6/commands/npm-ci)
+[Official GH Action from Cypress](https://github.com/marketplace/actions/cypress-io)
+[About GitHub Actions](https://docs.github.com/en/actions/learn-github-actions)
+[About GitHub Actions - context](https://docs.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#github-context)
+[About GitHub Actions - env files](https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#environment-files)
+[About GitHub Actions - secrets](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
+[About GitHub's PATs ](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
+[Introduction to ghcr](https://github.blog/2020-09-01-introducing-github-container-registry/)
+[Docker images and GitHub packages](https://docs.github.com/en/packages/guides/pushing-and-pulling-docker-images)
+[Here is the minimal Cypress image](https://hub.docker.com/r/cypress/base)
