@@ -1,5 +1,7 @@
 # Value and Quality: An Epic Story Of End-to-End Testing Architecture Part 1
+
 ## What this article is about
+
 End-to-end testing is often equated with the frontend and often resides in the frontend codebase. I believe this is a significant mistake with a specific solution.
 
 The first part of this article will define the problem and lay out a proposed solution.
@@ -259,7 +261,7 @@ Now that the base setup is complete you have a cypress installation with a linti
 
 Now that this is done it might be time to `git commit` so we can get going with the docker setup.
 
-FYI GitHub now uses 'main' as the default name for the root branch. In my example, I am using 'master', which was the previous standard. 
+FYI GitHub now uses 'main' as the default name for the root branch. In my example, I am using 'master', which was the previous standard.
 
 ### Containerising
 
@@ -493,6 +495,10 @@ If you push this change then you will see that your image is listed in the Packa
 ![img.png](readme_assets/img_6.png)
 
 ### Finishing up
+
+I have attempted to demonstrate that the default architecture for e2e testing, which sees e2e tests reside in the frontend codebase and has frontend ownership, is a mistake which is easy to rectify by extracting it to another repo and containerising it for consumption.  
+
+How exactly to consume these tests will be the subject of part 2 of this series.
 
 Of course, this project is not yet complete. In particular, much more should be done in CI, so a follow-up article might include:
 
